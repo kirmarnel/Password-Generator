@@ -39,32 +39,39 @@ function writePassword() {
 
 function generatePassword() {
   var password = ""
-  passArray = [];
+  var passArray = [];
  
 //check critera:
 //check number of characters
 var numberChar = document.getElementById("numberChar").value
-
 //if statement to check if numbers are included
-if (document.querySelector("#numbers").checked = true) {
+for (var i=0; i<numberChar; i++) {
+
+  if (document.querySelector("#numbers").checked === true) {
+    passArray.push(randomNumber())
+  i++
+  }
   
+  //if statement to check if upCase are included
+  if (document.querySelector("#upCase").checked === true) {
+  passArray.push(randomUpper())
+  i++
+  }
+  //if statement to check if lowCase are included
+  if (document.querySelector("#lowCase").checked === true) {
+passArray.push(randomLower())
+i++
+  }
+  //if statement to check if symbols are included
+  if (document.querySelector("#symbols").checked === true) {
+passArray.push(randomSymbol())
+i++
+  }
 }
 
-//if statement to check if upCase are included
-if (document.querySelector("#upCase").checked = true) {
-  
-}
-//if statement to check if lowCase are included
-if (document.querySelector("#lowCase").checked = true) {
-  
-}
-//if statement to check if symbols are included
-if (document.querySelector("#symbols").checked = true) {
-  
-}
-//if true, add to password array
+password = passArray.join("")
 
-//loop until number of characters is met
+
 
 //return
 return password
