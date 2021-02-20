@@ -1,81 +1,57 @@
-
-// Random Functions
-
-//Random lower case letter
-function randomLower() {
-    return String.fromCharCode (Math.floor(Math.random() * 26) + 97);
-}
-
-//Random upper case letter
-function randomUpper() {
-  return String.fromCharCode (Math.floor(Math.random() * 26) + 65);
-}
-
-//Random number
 function randomNumber() {
   return String.fromCharCode (Math.floor(Math.random() * 10) + 48);
 }
 
-//Random symbol
+function randomUpper() {
+  return String.fromCharCode (Math.floor(Math.random() * 26) + 65);
+}
+
+function randomLower() {
+  return String.fromCharCode (Math.floor(Math.random() * 26) + 97);
+}
+
 function randomSymbol() {
   var symbols = "!@#$%^&*~<>.,"
   return symbols [Math.floor (Math.random()* symbols.length)];
-
 }
-
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
-
 }
 
 function generatePassword() {
   var password = ""
   var passArray = [];
- 
-//check critera:
-//check number of characters
-var numberChar = document.getElementById("numberChar").value
-//if statement to check if numbers are included
-for (var i=0; i<numberChar; i++) {
+  var numberChar = document.getElementById("numberChar").value
 
-  if (document.querySelector("#numbers").checked === true) {
-    passArray.push(randomNumber())
-  i++
-  }
+  for (var i=0; i<numberChar; i++) {
   
-  //if statement to check if upCase are included
-  if (document.querySelector("#upCase").checked === true) {
-  passArray.push(randomUpper())
-  i++
+    if (document.querySelector("#numbers").checked) {
+      passArray.push(randomNumber()) 
+    } else if (document.querySelector("#upCase").checked) {
+     passArray.push(randomUpper())  
+    } else if (document.querySelector("#lowCase").checked) {    
+      passArray.push(randomLower())
+    } else if (document.querySelector("#symbols").checked) { 
+      passArray.push(randomSymbol())
+    }  
   }
-  //if statement to check if lowCase are included
-  if (document.querySelector("#lowCase").checked === true) {
-passArray.push(randomLower())
-i++
+  password = passArray.join("")
+  return password
   }
-  //if statement to check if symbols are included
-  if (document.querySelector("#symbols").checked === true) {
-passArray.push(randomSymbol())
-i++
-  }
-}
 
-password = passArray.join("")
+
 
 
 
 //return
-return password
-}
+
+  
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);

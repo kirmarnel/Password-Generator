@@ -56,6 +56,8 @@ header {
 
 .card-footer {
   text-align: center;
+  
+
 }
 
 .card-footer::before {
