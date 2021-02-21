@@ -1,5 +1,6 @@
 function randomNumber() {
   return String.fromCharCode (Math.floor(Math.random() * 10) + 48);
+
 }
 
 function randomUpper() {
@@ -33,23 +34,32 @@ function generatePassword() {
   
     if (document.querySelector("#numbers").checked) {
       passArray.push(randomNumber()) 
-    } else if (document.querySelector("#upCase").checked) {
+    } 
+    if (document.querySelector("#upCase").checked) {
      passArray.push(randomUpper())  
-    } else if (document.querySelector("#lowCase").checked) {    
+    } 
+    if (document.querySelector("#lowCase").checked) {    
       passArray.push(randomLower())
-    } else if (document.querySelector("#symbols").checked) { 
+    } 
+    if (document.querySelector("#symbols").checked) { 
       passArray.push(randomSymbol())
     }  
   }
-  password = passArray.join("")
-  return password
-  }
+  for (var i=0; i<numberChar; i++) {
+    var index= Math.floor(Math.random()*passArray.length)
+    
+    password += passArray[index]
+      }
+      return password
+      }
+  
+ 
 
 
 
 
 
-//return
+
 
   
 
